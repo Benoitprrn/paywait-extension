@@ -10,12 +10,7 @@ echo ""
 echo "Earn money while your AI codes."
 echo "One ad. Every time you wait. You keep 50%."
 echo ""
-# Token en argument ou saisi interactivement
-if [ -n "$1" ]; then
-  TOKEN="$1"
-else
-  read -p "Enter your token (available at elenabenoit.com): " TOKEN
-fi
+read -p "Enter your token (available at elenabenoit.com): " TOKEN
 
 if [ -z "$TOKEN" ]; then
   echo "❌ Missing token. Installation cancelled."
