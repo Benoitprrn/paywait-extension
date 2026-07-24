@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASE_URL="https://raw.githubusercontent.com/Benoitprrn/paywait-extension/main"
+
 echo ""
 echo "╔═══════════════════════════════════════╗"
 echo "║         Installing PayWait            ║"
@@ -24,11 +26,22 @@ fi
 echo ""
 echo "Installing..."
 
-# Créer le dossier PayWait
+# Créer les dossiers PayWait
 mkdir -m 700 -p ~/.paywait
+mkdir -m 700 -p ~/.paywait/antigravity
+mkdir -m 700 -p ~/.paywait/opencode
 
-# Copier le script statusline
-cp "$(dirname "$0")/claude-code/statusline.mjs" ~/.paywait/statusline.mjs
+# Télécharger les fichiers depuis GitHub (pas de dépendance à une copie locale de extension/)
+curl -sSL "$BASE_URL/claude-code/statusline.mjs" -o ~/.paywait/statusline.mjs
+curl -sSL "$BASE_URL/antigravity/statusline.mjs" -o ~/.paywait/antigravity/statusline.mjs
+curl -sSL "$BASE_URL/antigravity/install-antigravity.mjs" -o ~/.paywait/antigravity/install-antigravity.mjs
+curl -sSL "$BASE_URL/antigravity/uninstall-antigravity.mjs" -o ~/.paywait/antigravity/uninstall-antigravity.mjs
+curl -sSL "$BASE_URL/antigravity/local-files.mjs" -o ~/.paywait/antigravity/local-files.mjs
+curl -sSL "$BASE_URL/antigravity/refresh-worker.mjs" -o ~/.paywait/antigravity/refresh-worker.mjs
+curl -sSL "$BASE_URL/opencode/dist/tui.js" -o ~/.paywait/opencode/tui.js
+curl -sSL "$BASE_URL/opencode/scripts/install-opencode.mjs" -o ~/.paywait/opencode/install-opencode.mjs
+curl -sSL "$BASE_URL/opencode/scripts/uninstall-opencode.mjs" -o ~/.paywait/opencode/uninstall-opencode.mjs
+curl -sSL "$BASE_URL/opencode/package.json" -o ~/.paywait/opencode/package.json
 
 # Sauvegarder le token
 echo "{\"token\": \"$TOKEN\", \"backend\": \"https://elenabenoit.com/api\"}" > ~/.paywait/config.json
@@ -58,12 +71,12 @@ fs.writeFileSync(path, JSON.stringify(s, null, 2));
 
 # Installer le plugin TUI OpenCode indépendamment lorsque l'outil est présent.
 if command -v opencode >/dev/null 2>&1; then
-  node "$(dirname "$0")/opencode/scripts/install-opencode.mjs" || true
+  node ~/.paywait/opencode/install-opencode.mjs || true
 fi
 
 # Installer la statusline Antigravity sans affecter Claude Code ou OpenCode.
 if command -v agy >/dev/null 2>&1; then
-  node "$(dirname "$0")/antigravity/install-antigravity.mjs" || true
+  node ~/.paywait/antigravity/install-antigravity.mjs || true
 fi
 
 echo ""
