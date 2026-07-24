@@ -1,0 +1,14 @@
+{
+  "name": "paywait-opencode",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tui": "./dist/tui.js"
+  },
+  "scripts": {
+    "build": "bun build ./src/tui.tsx --outfile ./dist/tui.js --target bun --external @opencode-ai/plugin/tui --external solid-js --external @opentui/solid/jsx-runtime --external @opentui/solid/jsx-dev-runtime"
+  },
+  "dependencies": {
+    "open": "^11.0.0"
+  }
+}
