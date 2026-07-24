@@ -5,11 +5,16 @@ echo "╔═══════════════════════�
 echo "║        Uninstalling PayWait           ║"
 echo "╚═══════════════════════════════════════╝"
 echo ""
-read -p "Are you sure you want to uninstall PayWait? (y/n): " CONFIRM
-
-if [ "$CONFIRM" != "y" ]; then
-  echo "Uninstallation cancelled."
-  exit 0
+SKIP_CONFIRM=false
+if [ "$1" = "--yes" ] || [ "$1" = "-y" ]; then
+  SKIP_CONFIRM=true
+fi
+if [ "$SKIP_CONFIRM" = false ]; then
+  read -p "Are you sure you want to uninstall PayWait? (y/n): " CONFIRM
+  if [ "$CONFIRM" != "y" ]; then
+    echo "Uninstallation cancelled."
+    exit 0
+  fi
 fi
 
 echo ""

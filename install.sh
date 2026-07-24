@@ -30,10 +30,13 @@ cp "$(dirname "$0")/claude-code/statusline.mjs" ~/.paywait/statusline.mjs
 echo "{\"token\": \"$TOKEN\", \"backend\": \"https://elenabenoit.com/api\"}" > ~/.paywait/config.json
 chmod 600 ~/.paywait/config.json
 
-# Sauvegarder le settings.json existant
+# Sauvegarder le settings.json existant une seule fois : ne jamais écraser
+# une sauvegarde déjà présente, y compris si PayWait est déjà installé
+# (sinon une réinstallation capturerait l'état PayWait comme "original").
 SETTINGS="$HOME/.claude/settings.json"
-if [ -f "$SETTINGS" ]; then
-  cp "$SETTINGS" "$HOME/.claude/settings.json.paywait-backup"
+BACKUP="$HOME/.claude/settings.json.paywait-backup"
+if [ -f "$SETTINGS" ] && [ ! -f "$BACKUP" ]; then
+  cp "$SETTINGS" "$BACKUP"
 fi
 
 # Mettre à jour settings.json Claude Code
