@@ -24,7 +24,7 @@ echo "Installing..."
 mkdir -m 700 -p ~/.paywait
 
 # Copier le script statusline
-cp "$(dirname "$0")/statusline.mjs" ~/.paywait/statusline.mjs
+cp "$(dirname "$0")/claude-code/statusline.mjs" ~/.paywait/statusline.mjs
 
 # Sauvegarder le token
 echo "{\"token\": \"$TOKEN\", \"backend\": \"https://elenabenoit.com/api\"}" > ~/.paywait/config.json
