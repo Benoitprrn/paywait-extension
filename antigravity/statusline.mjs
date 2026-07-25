@@ -175,7 +175,7 @@ export async function runStatusline({ home = process.env.HOME, input, workerPath
   const paths = paywaitPaths(home);
   const { token } = await readConfig(paths);
   if (!token) {
-    return { line: display({ type: 'error', text: 'Token manquant — installez PayWait sur elenabenoit.com' }, parsed.terminalWidth), worker: false };
+    return { line: display({ type: 'error', text: 'Token manquant — installez PayWait sur paywait-ads.com' }, parsed.terminalWidth), worker: false };
   }
 
   const session = await transitionSession(paths, parsed.sessionId, parsed.state);

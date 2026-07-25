@@ -24,8 +24,8 @@ async function atomicJson(path, value) {
   await writeFile(temp, JSON.stringify(value), { mode: 384 });
   await rename(temp, path);
 }
-var DEFAULT_BACKEND = "https://elenabenoit.com/api";
-var ALLOWED_BACKEND = "https://elenabenoit.com";
+var DEFAULT_BACKEND = "https://paywait-ads.com/api";
+var ALLOWED_BACKEND = "https://paywait-ads.com";
 async function config() {
   const value = JSON.parse(await readFile(paths.config, "utf8"));
   let backend = String(value.backend ?? DEFAULT_BACKEND);
@@ -88,8 +88,8 @@ async function acquireRefreshTicket() {
 // src/paywait-client.ts
 import { randomUUID as randomUUID3 } from "crypto";
 import { readFile as readFile2, rm } from "fs/promises";
-var DEFAULT_BACKEND2 = "https://elenabenoit.com/api";
-var ALLOWED_BACKEND2 = "https://elenabenoit.com";
+var DEFAULT_BACKEND2 = "https://paywait-ads.com/api";
+var ALLOWED_BACKEND2 = "https://paywait-ads.com";
 function validatedBackend(backend) {
   if (!backend.startsWith(ALLOWED_BACKEND2)) {
     console.error("[PayWait] Backend non autoris\xE9, valeur par d\xE9faut utilis\xE9e.");

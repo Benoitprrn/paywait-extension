@@ -2,8 +2,8 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, open, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
-export const DEFAULT_BACKEND = 'https://elenabenoit.com/api';
-const ALLOWED_BACKEND = 'https://elenabenoit.com';
+export const DEFAULT_BACKEND = 'https://paywait-ads.com/api';
+const ALLOWED_BACKEND = 'https://paywait-ads.com';
 export const REFRESH_LOCK_TTL_MS = 3_500;
 export const SESSION_LOCK_TTL_MS = 1_000;
 export const PENDING_REQUEST_TTL_MS = 60_000;

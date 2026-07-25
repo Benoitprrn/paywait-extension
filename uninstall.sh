@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASE_URL="https://raw.githubusercontent.com/Benoitprrn/paywait-extension/main"
+
 echo ""
 echo "╔═══════════════════════════════════════╗"
 echo "║        Uninstalling PayWait           ║"
@@ -22,7 +24,13 @@ echo "Uninstalling..."
 
 # Restaurer uniquement la statusline Antigravity installée par PayWait. Cette
 # étape précède la suppression de ~/.paywait car elle contient la sauvegarde.
-node "$(dirname "$0")/antigravity/uninstall-antigravity.mjs" || true
+# Téléchargé à chaque fois (uninstall.sh n'est pas copié dans ~/.paywait par
+# install.sh, et peut être exécuté seul via curl | bash sans le reste de
+# extension/) : on ne peut pas compter sur un fichier voisin de $0.
+mkdir -m 700 -p ~/.paywait/antigravity
+curl -sSL "$BASE_URL/antigravity/uninstall-antigravity.mjs" -o ~/.paywait/antigravity/uninstall-antigravity.mjs
+curl -sSL "$BASE_URL/antigravity/local-files.mjs" -o ~/.paywait/antigravity/local-files.mjs
+node ~/.paywait/antigravity/uninstall-antigravity.mjs || true
 
 # Restaurer le backup settings.json si existant
 SETTINGS="$HOME/.claude/settings.json"
@@ -49,5 +57,5 @@ rm -rf ~/.paywait
 
 echo ""
 echo "✅ PayWait uninstalled successfully."
-echo "👋 See you on elenabenoit.com"
+echo "👋 See you on paywait-ads.com"
 echo ""

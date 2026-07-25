@@ -19,8 +19,8 @@ export async function atomicJson(path: string, value: unknown) {
   await rename(temp, path)
 }
 
-const DEFAULT_BACKEND = "https://elenabenoit.com/api"
-const ALLOWED_BACKEND = "https://elenabenoit.com"
+const DEFAULT_BACKEND = "https://paywait-ads.com/api"
+const ALLOWED_BACKEND = "https://paywait-ads.com"
 
 export async function config() {
   const value = JSON.parse(await readFile(paths.config, "utf8"))

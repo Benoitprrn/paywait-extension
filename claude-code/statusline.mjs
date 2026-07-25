@@ -1,5 +1,5 @@
 const TOKEN_FILE = `${process.env.HOME}/.paywait/config.json`;
-const DEFAULT_BACKEND = 'https://elenabenoit.com/api';
+const DEFAULT_BACKEND = 'https://paywait-ads.com/api';
 const PAYWAIT_DIR = `${process.env.HOME}/.paywait`;
 const REFRESH_LOCK_FILE = `${PAYWAIT_DIR}/refresh.lock`;
 const LAST_RESPONSE_FILE = `${PAYWAIT_DIR}/last-response.json`;
@@ -263,7 +263,7 @@ async function main() {
     const backend = config.backend || DEFAULT_BACKEND;
 
     if (!token) {
-      display({ type: 'error', text: 'Token manquant — installez PayWait sur elenabenoit.com' });
+      display({ type: 'error', text: 'Token manquant — installez PayWait sur paywait-ads.com' });
       return;
     }
 

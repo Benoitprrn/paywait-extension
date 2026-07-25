@@ -10,11 +10,11 @@ echo ""
 echo "Earn money while your AI codes."
 echo "One ad. Every time you wait. You keep 50%."
 echo ""
-read -p "Enter your token (available at elenabenoit.com): " TOKEN
+read -p "Enter your token (available at paywait-ads.com): " TOKEN
 
 if [ -z "$TOKEN" ]; then
   echo "❌ Missing token. Installation cancelled."
-  echo "   → Get your token at elenabenoit.com"
+  echo "   → Get your token at paywait-ads.com"
   exit 1
 fi
 
@@ -39,7 +39,7 @@ curl -sSL "$BASE_URL/opencode/scripts/uninstall-opencode.mjs" -o ~/.paywait/open
 curl -sSL "$BASE_URL/opencode/package.json" -o ~/.paywait/opencode/package.json
 
 # Sauvegarder le token
-echo "{\"token\": \"$TOKEN\", \"backend\": \"https://elenabenoit.com/api\"}" > ~/.paywait/config.json
+echo "{\"token\": \"$TOKEN\", \"backend\": \"https://paywait-ads.com/api\"}" > ~/.paywait/config.json
 chmod 600 ~/.paywait/config.json
 
 # Sauvegarder le settings.json existant une seule fois : ne jamais écraser

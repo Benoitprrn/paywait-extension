@@ -3,8 +3,8 @@ import { readFile, rm } from "node:fs/promises"
 import { atomicJson, paths } from "./local-files.js"
 import type { PaywaitResponse } from "./types.js"
 
-const DEFAULT_BACKEND = "https://elenabenoit.com/api"
-const ALLOWED_BACKEND = "https://elenabenoit.com"
+const DEFAULT_BACKEND = "https://paywait-ads.com/api"
+const ALLOWED_BACKEND = "https://paywait-ads.com"
 
 function validatedBackend(backend: string): string {
   if (!backend.startsWith(ALLOWED_BACKEND)) {

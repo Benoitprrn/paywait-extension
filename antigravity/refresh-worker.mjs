@@ -12,7 +12,7 @@ import {
   writeLastResponse,
 } from './local-files.mjs';
 
-const ALLOWED_BACKEND = 'https://elenabenoit.com';
+const ALLOWED_BACKEND = 'https://paywait-ads.com';
 
 function validPayload(value) {
   return value &&
